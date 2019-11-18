@@ -1,0 +1,27 @@
+{
+    "employees": [{
+            "id": 12,
+            "name": "ww1",
+            "address": "eqwe",
+            "age": "qweqwe",
+            "company": "",
+            "avatar": ""
+        },
+        {
+            "id": 2,
+            "name": "2",
+            "address": "2",
+            "age": "2",
+            "company": "",
+            "avatar": ""
+        },
+        {
+            "id": 3,
+            "name": "3",
+            "address": "eqweqeqweqwe",
+            "age": "ưqe",
+            "company": "",
+            "avatar": ""
+        }
+    ]
+}

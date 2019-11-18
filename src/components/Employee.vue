@@ -1,26 +1,30 @@
 <template>
   <div class="container">
     <div class="row">
+      <router-link 
+             
+               :to=" { name: 'DetailPage', params: { id: idtest, dataEmployee: objtest  }}"
+              >Linktest</router-link>
       <table class="table table-striped">
         <thead>
-          <tr v-for="header in employeeInput" :key="header">
+          <tr v-for="item in header" :key="item">
             <th>
-              <span>Name</span>
+              <span>{{item.name}}</span>
               <br />
             </th>
 
             <th>
-              <span>Age</span>
+              <span>{{item.address}}</span>
               <br />
             </th>
 
             <th>
-              <span>Address</span>
+              <span>{{item.age}}</span>
               <br />
             </th>
 
             <th>
-              <span>Company</span>
+              <span>{{item.company}}</span>
               <br />
             </th>
             <th>
@@ -30,35 +34,44 @@
         </thead>
         <tbody>
           <tr v-for="(item, index) in employees" :key="index">
-            <td>{{ item.name }}</td>
+            <td> 
+              <router-link 
+              tag="a"
+              class="nav-link"
+               :to=" { name: 'DetailPage', params: { id: index, dataEmployee: employees[index]  }}"
+              >{{item.name}}</router-link>
+            </td>
+
             <td>{{ item.address }}</td>
             <td>{{ item.age }}</td>
             <td>{{ item.company }}</td>
             <td>
-              <buttondelete-component
+              <ButtonEdit
                 :isDelete="isDelete"
                 :index="index"
                 @deleteEmployee="deleteEmployee"
-              ></buttondelete-component>
-              <buttonedit-component
+              ></ButtonEdit>
+              <ButtonDelete
                 :isEdit="isEdit"
                 :index="index"
                 :employeeInput="employeeInput"
                 @editEmployee="editEmployee"
-              ></buttonedit-component>
+              ></ButtonDelete>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
     <div id="menu" class="row">
-      <buttonadd-component
+      <ButtonAdd
         :isVisible="isVisible"
         :employee="employeeInput"
         :employees="employees"
         @addEmployees="addNewEmployee"
-      ></buttonadd-component>
+      ></ButtonAdd>
     </div>
+
+
   </div>
 </template>
 
@@ -69,10 +82,23 @@ import posed2, { EditEmp } from "vue-pose";
 import ButtonAdd from "./ButtonAdd.vue";
 import ButtonDelete from "./ButtonDelete.vue";
 import ButtonEdit from "./ButtonEdit.vue";
+import DetailPage from "./DetailPage.vue";
+import Data from "./data.json";
+// import Data from "./data.js";
 export default {
   name: "HelloWorld",
   data() {
     return {
+      idtest: 3,
+      objtest: {
+        "id": 2,
+            "name": "2",
+            "address": "2",
+            "age": "2",
+            "company": "",
+            "avatar": ""
+      },
+      isIndex: '',
       isVisible: false,
       isDelete: false,
       isEdit: false,
@@ -85,46 +111,23 @@ export default {
           avatar: ""
         }
       ],
-      employees: [
+      header: [
         {
-          id: 12,
-          name: "ww1",
-          address: "eqwe",
-          age: "qweqwe",
-          company: "",
-          avatar: ""
-        },
-        {
-          id: 2,
-          name: "2",
-          address: "2",
-          age: "2",
-          company: "",
-          avatar: ""
-        },
-        {
-          id: 3,
-          name: "3",
-          address: "eqweqeqweqwe",
-          age: "ưqe",
-          company: "",
-          avatar: ""
-        },
-        {
-          id: 4,
-          name: "4",
-          address: "4",
-          age: "4",
-          company: "",
+          name: "Name",
+          address: "Address",
+          age: "Age",
+          company: "Company",
           avatar: ""
         }
-      ]
+      ],
+      employees: Data.employees
+    
     };
   },
   components: {
-    "buttonadd-component": ButtonAdd,
-    "buttondelete-component": ButtonDelete,
-    "buttonedit-component": ButtonEdit,
+     ButtonAdd,
+    ButtonDelete,
+    ButtonEdit,
     EditEmp,
     ShadeEditEmp: posed2.div({
       enter: {
@@ -177,8 +180,9 @@ export default {
         avatar: this.employeeInput.avatar
       };
       const xx= index.name;
-      console.log(index);
+      // console.log(index);
     }
+    
   }
 };
 </script>

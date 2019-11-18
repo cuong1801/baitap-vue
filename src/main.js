@@ -8,13 +8,10 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
-// import ButtonAdd from '/ButtonAdd'
 Vue.config.productionTip = false
 
 
-/* eslint-disable no-new */
 
-// Vue.component('buttonadd-component', ButtonAdd);
 new Vue({
     el: '#app',
     router,

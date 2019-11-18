@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a href="#" v-on:click="isEdit = true">
+    <a v-on:click="isEdit = true">
       <i class="fas fa-user-edit"></i>
     </a>
     <EditEmp>

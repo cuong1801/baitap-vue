@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a href="#" v-on:click="isDelete=true">
+    <a  v-on:click="isDelete=true">
       <i class="fas fa-user-times"></i>
     </a>
     <DeleteEmp>
