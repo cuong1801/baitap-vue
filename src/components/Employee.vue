@@ -1,13 +1,9 @@
 <template>
   <div class="container">
     <div class="row">
-      <router-link 
-             
-               :to=" { name: 'DetailPage', params: { id: idtest, dataEmployee: objtest  }}"
-              >Linktest</router-link>
-      <table class="table table-striped">
+      <table class="table table-striped border-0">
         <thead>
-          <tr v-for="item in header" :key="item">
+          <tr v-for="(item,index) in header" :key="index" class="bg-danger">
             <th>
               <span>{{item.name}}</span>
               <br />
@@ -38,7 +34,7 @@
               <router-link 
               tag="a"
               class="nav-link"
-               :to=" { name: 'DetailPage', params: { id: index, dataEmployee: employees[index]  }}"
+               :to=" { name: 'DetailPage', params: { id: index, obj: employees[index]  }}"
               >{{item.name}}</router-link>
             </td>
 
@@ -46,17 +42,17 @@
             <td>{{ item.age }}</td>
             <td>{{ item.company }}</td>
             <td>
-              <ButtonEdit
+              <ButtonDelete
                 :isDelete="isDelete"
                 :index="index"
                 @deleteEmployee="deleteEmployee"
-              ></ButtonEdit>
-              <ButtonDelete
+              ></ButtonDelete>
+              <ButtonEdit
                 :isEdit="isEdit"
                 :index="index"
-                :employeeInput="employeeInput"
+                :employeeEdit ="employees[index]"
                 @editEmployee="editEmployee"
-              ></ButtonDelete>
+              ></ButtonEdit>
             </td>
           </tr>
         </tbody>
@@ -84,25 +80,14 @@ import ButtonDelete from "./ButtonDelete.vue";
 import ButtonEdit from "./ButtonEdit.vue";
 import DetailPage from "./DetailPage.vue";
 import Data from "./data.json";
-// import Data from "./data.js";
 export default {
   name: "HelloWorld",
   data() {
     return {
-      idtest: 3,
-      objtest: {
-        "id": 2,
-            "name": "2",
-            "address": "2",
-            "age": "2",
-            "company": "",
-            "avatar": ""
-      },
-      isIndex: '',
       isVisible: false,
       isDelete: false,
       isEdit: false,
-      employeeInput: [
+      employeeInput: 
         {
           name: "",
           address: "",
@@ -110,7 +95,7 @@ export default {
           company: "",
           avatar: ""
         }
-      ],
+      ,
       header: [
         {
           name: "Name",
@@ -170,17 +155,16 @@ export default {
     deleteEmployee: function(index) {
       this.employees.splice(index, 1);
     },
-    editEmployee: function(employeeInput, index) {
+    editEmployee: function( employeeEdit, index) {
       let employeetmp = {
 
-        name: this.employeeInput.name,
-        address: this.employeeInput.address,
-        age: this.employeeInput.age,
-        company: this.employeeInput.company,
-        avatar: this.employeeInput.avatar
+        name: this.employeeEdit.name,
+        address: this.employeeEdit.address,
+        age: this.employeeEdit.age,
+        company: this.employeeEdit.company,
+        avatar: this.employeeEdit.avatar
       };
-      const xx= index.name;
-      // console.log(index);
+      employees[index]=employeetmp
     }
     
   }
@@ -207,6 +191,7 @@ button {
   cursor: pointer;
   padding: 10px 30px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+
 }
 
 .shade {

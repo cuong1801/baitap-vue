@@ -16,34 +16,34 @@
                 <thead></thead>
                 <tbody>
                   <tr>
-                    <th scope="row">Name</th>
-                    <input v-model="employeeInput.name" placeholder="sds" />
-                  </tr>
-                  <tr>
-                    <th scope="row">Age</th>
-                    <input v-model="employeeInput.age" />
-                  </tr>
-                  <tr>
-                    <th scope="row">Address</th>
-                    <input v-model="employeeInput.address" />
-                  </tr>
-                  <tr>
-                    <th scope="row">Company</th>
-                    <input v-model="employeeInput.company" />
-                  </tr>
-                  <tr>
-                    <th scope="row">Avartar</th>
-                    <div class="custom-file" style="    width: 55%;">
-                      <input type="file" class="custom-file-input" id="inputGroupFile04" />
-                      <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
-                    </div>
-                  </tr>
+                      <th scope="row">Name</th>
+                      <input class="w3-input" v-model="employeeEdit.name" />
+                    </tr>
+                    <tr>
+                      <th scope="row">Age</th>
+                      <input class="w3-input" v-model="employeeEdit.age" />
+                    </tr>
+                    <tr>
+                      <th scope="row">Address</th>
+                      <input class="w3-input" v-model="employeeEdit.address" />
+                    </tr>
+                    <tr>
+                      <th scope="row">Company</th>
+                      <input class="w3-input" v-model="employeeEdit.company" />
+                    </tr>
+                    <tr>
+                      <th scope="row">Avartar</th>
+                      <div class="custom-file w3-input" style="width: 55%;">
+                        <input type="file" class="custom-file-input" id="inputGroupFile04" />
+                        <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                      </div>
+                    </tr>
                 </tbody>
               </table>
             </InfoEmployee>
             <infoFooter class="modal-footer">
               <button @click="isEdit=false" class="btn btn-info">Close</button>
-              <button class="btn btn-info" @click="EditEmp(employeeInput, index), isEdit=false">save</button>
+              <button class="btn btn-info" @click="EditEmp(employeeEdit, index), isEdit=false">save</button>
             </infoFooter>
           </div>
         </div>
@@ -58,7 +58,8 @@ export default {
   props: {
     isEdit: Boolean,
     index: Number,
-    employeeInput: Object
+    employeeEdit: Object,
+    employees: Array
   },
   components: {
     EditEmp,
@@ -84,8 +85,8 @@ export default {
     infoFooter: posed2.div({})
   },
   methods: {
-    EditEmp: function(employeeInput, index) {
-      this.$emit("editEmployee",employeeInput, index);
+    EditEmp: function(employeeEdit, index) {
+      this.$emit("editEmployee",employeeEdit, index);
     }
   }
 };

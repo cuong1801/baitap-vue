@@ -1,16 +1,16 @@
 <template>
   <div id="menu" class="row">
     <div class="mt-3" style=" left: 50%;">
-      <button v-on:click="isVisible = true">
+      <button v-on:click="isVisibleAdd = true">
         <i class="fas fa-user-plus"></i>
       </button>
       <AddEmp>
-        <ShadeAddEmp class="shade" v-if="isVisible">
+        <ShadeAddEmp class="shade" v-if="isVisibleAdd">
           <ModalAddEmp class="modal"></ModalAddEmp>
           <div class="modal-dialog">
             <div class="modal-content">
               <infoHeader class="modal-header">
-                <h1>Add New Employee</h1>
+                <h1 class="container">Add New Employee</h1>
               </infoHeader>
               <InfoEmployee class="modal-body">
                 <table class="table table-sm table-light">
@@ -18,23 +18,23 @@
                   <tbody>
                     <tr>
                       <th scope="row">Name</th>
-                      <input v-model="employee.name" />
+                      <input class="w3-input" v-model="employee.name" />
                     </tr>
                     <tr>
                       <th scope="row">Age</th>
-                      <input v-model="employee.age" />
+                      <input class="w3-input" v-model="employee.age" />
                     </tr>
                     <tr>
                       <th scope="row">Address</th>
-                      <input v-model="employee.address" />
+                      <input class="w3-input" v-model="employee.address" />
                     </tr>
                     <tr>
                       <th scope="row">Company</th>
-                      <input v-model="employee.company" />
+                      <input class="w3-input" v-model="employee.company" />
                     </tr>
                     <tr>
                       <th scope="row">Avartar</th>
-                      <div class="custom-file" style="    width: 55%;">
+                      <div class="custom-file w3-input" style="    width: 55%;">
                         <input type="file" class="custom-file-input" id="inputGroupFile04" />
                         <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
                       </div>
@@ -43,8 +43,8 @@
                 </table>
               </InfoEmployee>
               <infoFooter class="modal-footer">
-                <button @click="isVisible=false" class="btn btn-info">Close</button>
-                <button class="btn btn-info" @click="addEmploy(employee), isVisible=false">save</button>
+                <button @click="isVisibleAdd=false" class="btn btn-info">Close</button>
+                <button class="btn btn-info" @click="addEmploy(employee), isVisibleAdd=false">save</button>
               </infoFooter>
             </div>
           </div>
@@ -53,14 +53,16 @@
     </div>
   </div>
 </template>
+
 <script>
+
 import posed, { AddEmp } from "vue-pose";
 
 export default {
   props:{
-      isVisible: Boolean,
+      isVisibleAdd: Boolean,
       employee: Object,
-      employees: Object,
+      employees:  Object
   },
   components: {
     AddEmp,
@@ -93,6 +95,8 @@ export default {
 };
 </script>
 <style scoped>
+@import "https://github.com/htactive-cuongdq/baitap-vue/blob/task/node_modules/w3.css";
+
 button {
   border: none;
   border-radius: 300px;
