@@ -1,0 +1,27 @@
+{
+    "employees": [{
+            "id": 12,
+            "name": "ww1",
+            "address": "eqwe",
+            "age": "qweqwe",
+            "company": "",
+            "avatar": "https://icon-library.net/images/avatar-icon-png/avatar-icon-png-8.jpg"
+        },
+        {
+            "id": 2,
+            "name": "2",
+            "address": "2",
+            "age": "2",
+            "company": "",
+            "avatar": "36639853_1779134148830111_5226755335561150464_n.jpg"
+        },
+        {
+            "id": 3,
+            "name": "3",
+            "address": "eqweqeqweqwe",
+            "age": "ưqe",
+            "company": "",
+            "avatar": "https://icon-library.net/images/avatar-icon-png/avatar-icon-png-8.jpg"
+        }
+    ]
+}
